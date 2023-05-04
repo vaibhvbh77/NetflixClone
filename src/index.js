@@ -4,14 +4,19 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import "../node_modules/bootstrap-scss/bootstrap.scss";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import {
+  createBrowserRouter,
+  createHashRouter,
+  HashRouter,
+  RouterProvider,
+} from "react-router-dom";
 import Header from "./components/Header";
 import Banner from "./components/Banner";
 import Login from "./components/Login";
 import List from "./components/List";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
-const appRouter = createBrowserRouter([
+const appRouter = createHashRouter([
   {
     path: "/",
     element: <App />,
