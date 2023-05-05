@@ -9,7 +9,7 @@ const Header = () => {
   };
   const [showSignInButton, setSignInButton] = useState(true);
   const location = useLocation();
-  console.log(location);
+
   useEffect(() => {
     if (location.pathname === "/dashboard") {
       setSignInButton(false);
