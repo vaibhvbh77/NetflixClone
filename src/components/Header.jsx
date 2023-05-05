@@ -1,5 +1,5 @@
-import React from "react";
-import { useNavigate, Link } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { useNavigate, Link, useLocation } from "react-router-dom";
 
 const Header = () => {
   const navigation = useNavigate();
@@ -7,6 +7,14 @@ const Header = () => {
     e.preventDefault();
     navigation("/login");
   };
+  const [showSignInButton, setSignInButton] = useState(true);
+  const location = useLocation();
+  console.log(location);
+  useEffect(() => {
+    if (location.pathname === "/dashboard") {
+      setSignInButton(false);
+    }
+  }, [location]);
   return (
     <div>
       <header className="topNav">
@@ -29,9 +37,13 @@ const Header = () => {
                   <option>English</option>
                   <option>Hindi</option>
                 </select>
-                <button className="btn btn-danger" onClick={signInHandler}>
-                  Signin
-                </button>
+                {showSignInButton ? (
+                  <button className="btn btn-danger" onClick={signInHandler}>
+                    Signin
+                  </button>
+                ) : (
+                  ""
+                )}
               </form>
             </div>
           </div>
